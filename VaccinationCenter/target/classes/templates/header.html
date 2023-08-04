@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+	<!-- Menu bar -->
+	<div class="dashboard-menu">
+		<table>
+			<tr>
+				<td><a href="/citizens">Citizens</a></td>
+				<td><a href="/vaccinationCenters">Vaccination Centers</a></td>
+				<td>
+					<a href="/logout" class="logout-btn">Logout</a>
+				</td>
+				<td>Welcome, <span th:text="${session.loggedInUsername}">Guest</span></td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Citizens</title>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+	<div th:replace="header :: body"></div>
+	<div class="container">
+		<h1>Citizens</h1>
+		<a href="/addCitizen" class="button">Add New Citizen</a>
+		<table border="1">
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>City</th>
+				<th>No. of Doses</th>
+				<th>Vaccination Status</th>
+				<th>Vaccination Center</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="citizen : ${citizens}">
+				<td th:text="${citizen.id}"></td>
+				<td th:text="${citizen.name}"></td>
+				<td th:text="${citizen.center.city}"></td>
+				<td th:text="${citizen.numberOfDoses}"></td>
+				<td th:text="${citizen.vaccinationStatus}"></td>
+				<td th:text="${citizen.center.name}"></td>
+				<!-- Other attributes and columns -->
+				<td>
+					<a th:href="@{/viewCitizen/{id}(id=${citizen.id})}" class="button">View</a>
+					<a th:href="@{/editCitizen/{id}(id=${citizen.id})}" class="button">Edit</a>
+					<a th:href="@{/deleteCitizen/{id}(id=${citizen.id})}" class="button">Delete</a>
+				</td>
+			</tr>
+		</table>
+
+		<a th:href="@{/dashboard}" class="button">Back to Dashboard</a>
+	</div>
+</body>
+
+</html>

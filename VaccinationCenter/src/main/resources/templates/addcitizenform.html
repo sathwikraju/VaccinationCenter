@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Citizen Form</title>
+<link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<body>
+	<a th:href="@{/citizens}" class="button">Back to Citizens</a>
+    <h1>Add Citizen Form</h1>
+    <form action="/addCitizen" method="post">
+        <label for="name">Citizen Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="city">Citizen City:</label>
+        <select id="city" name="city" onchange="updateVaccinationCenters()" required>
+            <option th:each="center : ${vaccinationCenters}" th:value="${center.city}" th:text="${center.city}"></option>
+        </select>
+        <br>
+        <label for="center">Vaccination Center:</label>
+        <select id="center" name="center.id" required>
+            <option th:each="center : ${vaccinationCenters}" th:value="${center.id}" th:text="${center.name}"></option>
+        </select>
+        <br>
+        <!-- Add more form fields as needed for the citizen details -->
+        <input type="submit" value="Add Citizen">
+    </form>
+
+    <br>
+    
+</body>
+</html>

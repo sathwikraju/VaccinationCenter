@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+	<a th:href="@{/citizens}" class="button">Back to Citizens</a>
+	<h1>Edit Citizen Information</h1>
+	<form th:object="${citizen}" th:action="@{/editCitizen/{id}(id=${citizen.id})}" method="post">
+		<input type="hidden" th:field="*{id}">
+		<label for="citizenName">Citizen Name:</label>
+		<input type="text" id="name" th:field="*{name}" required>
+		<br>
+		<label for="citizenCity">Citizen City:</label>
+		<select id="city" th:field="*{center.city}" required>
+			<option value="">-- Select City --</option>
+			<option th:each="center : ${vaccinationCenters}" th:value="${center.city}" th:text="${center.city}">
+			</option>
+		</select>
+		<br>
+		<label for="doses">No. of Doses:</label>
+		<select id="doses" th:field="*{numberOfDoses}">
+			<option value="0">None</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+		</select>
+		<br>
+		<label for="vaccinationCenter">Vaccination Center:</label>
+		<select id="vaccinationCenter" th:field="*{center.id}">
+			<option th:each="center : ${vaccinationCenters}" th:value="${center.id}" th:text="${center.name}">
+			</option>
+		</select>
+		<br>
+		<!-- Add more form fields as needed for editing other citizen details -->
+		<input type="submit" value="Update Citizen">
+	</form>
+
+	<br>
+</body>
+
+</html>

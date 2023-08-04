@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Vaccination Centers</title>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+
+	<div th:replace="header :: body"></div>
+	<div class="container">
+		<h1>Vaccination Centers</h1>
+
+		<a href="/addCenterForm" class="button">Add New Center</a>
+
+
+		<table border="1" >
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>City</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="center : ${vaccinationCenters}">
+				<td th:text="${center.id}"></td>
+				<td th:text="${center.name}"></td>
+				<td th:text="${center.city}"></td>
+				<td>
+					<a th:href="@{/vaccinationcenter/{id}(id=${center.id})}" class="button">View</a>
+					<a th:href="@{/editCenter/{id}(id=${center.id})}" class="button">Edit</a>
+					<a th:href="@{/deleteCenter/{id}(id=${center.id})}" class="button">Delete</a>
+				</td>
+			</tr>
+		</table>
+		<a th:href="@{/dashboard}" class="button">Back to Dashboard</a>
+	</div>
+</body>
+
+</html>

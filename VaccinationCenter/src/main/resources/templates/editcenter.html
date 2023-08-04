@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Edit Center Information</title>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+	<a th:href="@{/vaccinationCenters}" class="button">Back to Vaccination Centers</a>
+	<h1>Edit Center Information</h1>
+	<form th:object="${center}" th:action="@{/editCenter/{id}(id=${center.id})}" method="post">
+		<input type="hidden" th:field="*{id}">
+		<label for="centerName">Center Name:</label>
+		<input type="text" id="name" th:field="*{name}" required>
+		<br>
+		<label for="centerCity">Center City:</label>
+		<input type="text" id="city" th:field="*{city}" required>
+		<br>
+		<!-- Add more form fields as needed for the center editing -->
+		<input type="submit" value="Update Center">
+	</form>
+
+	<br>
+	
+</body>
+
+</html>

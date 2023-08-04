@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+	<div th:replace="header :: body"></div>
+	<a th:href="@{/vaccinationCenters}" class="button">Back to Vaccination Centers</a>
+	<div class="container">
+		<h1>Center Information</h1>
+		<table border="1">
+			<tr>
+				<th>Center Name</th>
+				<th>Id</th>
+				<th>City</th>
+			</tr>
+			<tr>
+				<td th:text="${center.name}"></td>
+				<td th:text="${center.id}"></td>
+				<td th:text="${center.city}"></td>
+			</tr>
+		</table>
+
+		<h2>All Citizens of this Center</h2>
+		<table border="1">
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="citizen : ${citizens}">
+				<td th:text="${citizen.id}"></td>
+				<td th:text="${citizen.name}"></td>
+				<td>
+					<a th:href="@{/viewCitizen/{id}(id=${citizen.id})}" class="button">View</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+
+</html>
